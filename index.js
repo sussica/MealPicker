@@ -15,11 +15,7 @@ app.route(['/main.css', '/main.js', '/home.html', '/'])
             res.sendFile(path.join(__dirname + req.url));
         });
 
-        
 
-
-
-        
 app.route('/')
     .post(function (req, res) {
         /// to process the request with position information for clients

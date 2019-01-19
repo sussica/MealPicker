@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // the first request from the client: load the page home.html, as well as
 // handle things for main.css and main.js
 // to access the home.html just by '/'
-app.route(['/main.css', '/main.js', '/home.html', '/'])
+app.route(['/main.css', '/main.js', '/home.html', '/','/favicon.ico'])
         .get((req, res) => {
             if (req.url == '/') {
                 req.url = '/home.html';

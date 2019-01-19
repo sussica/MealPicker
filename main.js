@@ -36,7 +36,7 @@ function updatePositionHelper(successCallback, errorCallback) {
 function handleGetPlaceSuccess(placeInformation){
     var placeJSON = placeInformation;
     console.log(placeJSON);
-    $("#paraRestaurantName").html("hello: "+placeJSON);
+    $("#paraRestaurantName").html("Hello: "+placeJSON.name);
 };
 
 

@@ -4,16 +4,18 @@ const port = 1106;
 var path = require('path');
 var request = require('request');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 // Call back function for handling the first request
 // the first request from the client: load the page home.html, as well as
 // handle things for main.css and main.js
 // to access the home.html just by '/'
-app.route(['/main.css', '/main.js', '/home.html', '/','/favicon.ico'])
+app.route(['/main.css', '/main.js', '/home.html', '/'])
         .get((req, res) => {
             if (req.url == '/') {
                 req.url = '/home.html';

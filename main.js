@@ -75,9 +75,7 @@ $(document).ready(function(){
         if(lat === undefined || lon === undefined){
             console.log([lat, lon]);
             $("#errorPara").css("visibility", "visible");
-
-            lat = 43;
-            lon = -78;
+            return;
         }
         var category = $("#category").val();
         var distance = $("#distance").val();

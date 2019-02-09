@@ -39,6 +39,9 @@ function handleGetPlaceSuccess(placeInformation){
     $("#paraRestaurantName").html("Hello: "+placeJSON.name);
 };
 
+function handleGetPlaceFailure(errorInformation) {
+    alert("Guess what, " + errorInformation.responseText);
+}
 
 $(document).ready(function(){   
     var lat;
@@ -55,7 +58,6 @@ $(document).ready(function(){
         },
         () => {
             console.log("error");
-            $("#errorPara").css("visibility", "visible");
         }
     );
 
@@ -65,20 +67,22 @@ $(document).ready(function(){
         if(lat === undefined || lon === undefined){
             console.log([lat, lon]);
             $("#errorPara").css("visibility", "visible");
-            lat = 43.7796416;
-            lon = -79.415927;
+            return;
         }
-            $.ajax({
-                type: "POST",
-                url: "/",
-                data: { "latitude": lat, "longitude": lon },
-                success: handleGetPlaceSuccess
-            });
-    });
-    
+        var category = $("#category").val();
+        var distance = $("#distance").val();
+        var pricelevel = $("#priceLevel").val();
+        var rating = $("#rating").val();
 
+        $.ajax({
+            type: "POST",
+            url: "/",
+            data: { "latitude": lat, "longitude": lon, 
+                    "category": category, "distance": distance,
+                    "pricelevel": pricelevel, "rating":rating },
+            success: handleGetPlaceSuccess, 
+            error: handleGetPlaceFailure
+        });
+    });
     }
 );
-
-
-

@@ -16,6 +16,43 @@
     <script src="./main.js"></script>
 </head>
     <body>
+        <!-- TODO: Modify with bootstrap. -->
+        <label for="category">Category</label>
+        <select id="category">
+            <option value = "Korean"> Korean </option>
+            <option value="Chinese"> Chinese </option>
+            <option value="Western"> Western Food</option>
+            <option value="Fast"> Fast Food</option>
+            <option value ="Dessert"> Dessert </option>
+            <option value="" selected> Random</option>
+        </select>
+        <hr />
+        <label for="distance">Distance</label>
+        <select id="distance">
+            <option value="0.5"> 0.5km </option>
+            <option value="1"> 1km </option>
+            <option value="2"> 2km </option>
+            <option value = "3"> 3km</option>
+            <option value ="5"> 5km </option>
+            <option value = "-1" selected> I don't care</option>
+        </select>
+        <hr />
+        <label for="priceLevel">Price Level</label>
+        <select id="priceLevel">
+            <option value="1"> not costly</option>
+            <option value="2"> medium costly </option>
+            <option value="3"> costly </option>
+            <option value="4"> super costly</option>
+            <option value="-1" selected> I don't care</option>
+        </select>
+        <hr />
+        <label for="rating">Rating</label>
+        <select id="rating">
+            <option value="4">4</option>
+            <option value = "3"> 3 </option>
+            <option value="-1" selected> I don't care</option>
+        </select>
+        <hr />
         <button id="btnSendPosition">Let's Pick A Restaurant!</button>
         <P id="paraRestaurantName"></P>
         <P id="errorPara" style="visibility:hidden;">Oppps,Your location cannot be found🤷</P>     

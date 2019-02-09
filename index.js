@@ -48,7 +48,7 @@ app.route('/')
         //pagetoken?
 
         // filter returned results with this rating
-        var rating = requestJSON.rating;
+        var pickedRating = requestJSON.rating;
 
 
         var APIkey = "AIzaSyAaQDVhgRZ-jKBkqQBBpGemUDfdrSrkxrs";
@@ -64,6 +64,10 @@ app.route('/')
                     if (!error && response.statusCode == 200) {
 
                         var results = JSON.parse(response.body).results;
+
+                        // TODO: Filter results based on rating
+                        results = results.filter(({ rating }) => rating >= pickedRating);
+
                         var count = results.length;
                         var pick = Math.floor(Math.random() * count);               
 

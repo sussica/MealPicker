@@ -1,3 +1,5 @@
+
+
 // helper function for updatePosition because that sorry little ass cant do shit by itself
 function updatePositionHelper(successCallback, errorCallback) {
     successCallback = successCallback || function () {
@@ -35,6 +37,11 @@ function updatePositionHelper(successCallback, errorCallback) {
 
 function handleGetPlaceSuccess(placeInformation){
     var placeJSON = placeInformation;
+    var placeID = placeJSON.place_id;
+    var url = "https://www.google.com/maps/embed/v1/place?key="+
+    "AIzaSyAaQDVhgRZ-jKBkqQBBpGemUDfdrSrkxrs&q=place_id:"+placeID;
+    $("#map").prop('src', url);
+    
     console.log(placeJSON);
     $("#paraRestaurantName").html("Hello: "+placeJSON.name);
 };
@@ -42,6 +49,7 @@ function handleGetPlaceSuccess(placeInformation){
 function handleGetPlaceFailure(errorInformation) {
     alert("Guess what, " + errorInformation.responseText);
 }
+
 
 $(document).ready(function(){   
     var lat;
@@ -67,7 +75,9 @@ $(document).ready(function(){
         if(lat === undefined || lon === undefined){
             console.log([lat, lon]);
             $("#errorPara").css("visibility", "visible");
-            return;
+
+            lat = 43;
+            lon = -78;
         }
         var category = $("#category").val();
         var distance = $("#distance").val();

@@ -8,25 +8,34 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
-
+    <script src="./autocomplete.js"></script>
     <script src="./main.js"></script>
+
 </head>
     <body>
         <!-- TODO: Modify with bootstrap. -->
         <label for="category">Category</label>
-        <select id="category">
+   
+        
+        <div class="autocomplete" style="width:300px;">
+            <input id="category" type="text" placeholder="Category here..">
+        </div>
+
+        <!-- <select id="category">
             <option value = "Korean"> Korean </option>
             <option value="Chinese"> Chinese </option>
             <option value="Western"> Western Food</option>
             <option value="Fast"> Fast Food</option>
             <option value ="Dessert"> Dessert </option>
             <option value="" selected> Random</option>
-        </select>
+        </select> -->
         <hr />
         <label for="distance">Distance</label>
         <select id="distance">

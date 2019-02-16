@@ -15,7 +15,7 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')));
 // the first request from the client: load the page home.html, as well as
 // handle things for main.css and main.js
 // to access the home.html just by '/'
-app.route(['/main.css', '/main.js', '/home.html', '/'])
+app.route(['/main.css', '/main.js', '/home.html', '/', '/autocomplete.js'])
         .get((req, res) => {
             if (req.url == '/') {
                 req.url = '/home.html';

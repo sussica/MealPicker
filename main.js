@@ -19,8 +19,7 @@ function updatePositionHelper(successCallback, errorCallback) {
       }
 
       geolocation.watchPosition(handleSuccess, errorCallback, {
-        enableHighAccuracy: true, // high accuracy because idk how but this fixes its problems with mobiles
-        maximumAge: 0 // 0 sec. ask for new object everytime user moves.
+        enableHighAccuracy: true // high accuracy because idk how but this fixes its problems with mobiles
       });
 
     } catch (err) {
@@ -33,7 +32,8 @@ function updatePositionHelper(successCallback, errorCallback) {
 
 
 function handleGetPlaceSuccess(placeInformation) {
-  var placeJSON = placeInformation;
+  console.log(placeInformation+"a");
+  var placeJSON = JSON.parse(placeInformation);
   var placeID = placeJSON.place_id;
   var url = "https://www.google.com/maps/embed/v1/place?key=" +
     "AIzaSyAaQDVhgRZ-jKBkqQBBpGemUDfdrSrkxrs&q=place_id:" + placeID;
@@ -98,7 +98,7 @@ $(document).ready(function() {
 
 
   $("#btnSendPosition").click(function() {
-    console.log("1", lat, lon);
+    console.log("not having the geolocation", lat, lon);
     if (lat === undefined || lon === undefined) {
       $("#errorPara").css("visibility", "visible");
       return;
@@ -112,7 +112,7 @@ $(document).ready(function() {
     $.ajax({
       type: "POST",
       url: "/",
-      contentType: "json",
+      contentType: "application/json",
       data: JSON.stringify({
         "latitude": lat,
         "longitude": lon,

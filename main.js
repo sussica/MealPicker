@@ -33,7 +33,7 @@ function updatePositionHelper(successCallback, errorCallback) {
 
 function handleGetPlaceSuccess(placeInformation) {
   console.log(placeInformation+"a");
-  var placeJSON = JSON.parse(placeInformation);
+  var placeJSON = placeInformation;
   var placeID = placeJSON.place_id;
   var url = "https://www.google.com/maps/embed/v1/place?key=" +
     "AIzaSyAaQDVhgRZ-jKBkqQBBpGemUDfdrSrkxrs&q=place_id:" + placeID;
@@ -46,6 +46,7 @@ function handleGetPlaceSuccess(placeInformation) {
 var tempInfo;
 function handleGetPlaceFailure(errorInformation) {
   tempInfo = errorInformation;
+  debugger;
   alert("Guess what, " + errorInformation.responseText);
 }
 
@@ -98,7 +99,6 @@ $(document).ready(function() {
 
 
   $("#btnSendPosition").click(function() {
-    console.log("not having the geolocation", lat, lon);
     if (lat === undefined || lon === undefined) {
       $("#errorPara").css("visibility", "visible");
       return;

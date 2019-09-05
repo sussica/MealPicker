@@ -36,7 +36,7 @@ app.route('/')
     // TODO: if lat and lon are inappropriate send back a 400 with error message
     if (lat == undefined || lon == undefined) {
       res.status(400);
-      console.log(lat, lon);
+
       res.send('The website goes wrong, contact sussicaya@gmail.com to fix it!');
       return;
     }
@@ -62,14 +62,14 @@ app.route('/')
       "json?key=" + APIkey + "&radius=" + distance + "&location=" + lat + "," + lon + "&keyword=" + keyword +
       "&opennow=true" + pricelevel;
 
-
+      console.log(URL);
 
     request(URL,
       function(error, response, body) {
         if (!error && response.statusCode == 200) {
 
           var results = JSON.parse(response.body).results;
-
+          console.log(results);
           // TODO: Filter results based on rating
           results = results.filter(({
             rating
@@ -78,13 +78,14 @@ app.route('/')
           var count = results.length;
           var pick = Math.floor(Math.random() * count);
           console.log('line 80 index');
-          res.send(JSON.stringify(results[pick]));
-        }else{
-          console.log('index 83');
+          console.log(results);
+
+          // debug mock object
+          res.json({place_id: "123", name: "Test"});
         }
       }
     )
 
   })
 
-app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || port, () => console.log(`App listening on port ${port}!`))
